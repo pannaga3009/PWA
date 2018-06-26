@@ -59,7 +59,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+h7 {
     font-family: 'Roboto', serif;
     color: #000;
     margin-top: 10px;
@@ -100,6 +101,12 @@ h6 {
     font-size: 15px;
     line-height: 17px;
     font-weight: normal;
+}
+
+h7 {
+    font-size:20px;
+
+    text-align: left;
 }
 
 
@@ -408,7 +415,7 @@ section {
         margin: 0 18%;
     }
     .navbar-default {
-        background-color: #fff;
+        background-color:#fff(102, 18, 18)53, 49, 49,(36, 26, 26);
         padding: 5px 0;
         border-color: transparent;
         -webkit-transition: all .5s ease-in-out;
@@ -435,7 +442,7 @@ section {
 }
 
 .navbar-default .navbar-nav > li:last-child {
-    margin-right: 0px;
+    margin-right: 20px;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -524,6 +531,7 @@ section {
     color: #31aae2;
     background-color: #f5f5f5;
     padding-left: 25px;
+
 }
 
 .navbar-default .navbar-nav > .open > a,
@@ -1680,7 +1688,7 @@ section {
     padding: 30px 0;
     text-transform: uppercase;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 600px;
 }
 
 .footer_bottom_Section p {
