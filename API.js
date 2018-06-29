@@ -7,14 +7,38 @@ const sourceSelector = document.querySelector('#sourceSelector');
 window.addEventListener('load', e => {
     updateNews();
     update();
+    registerSW();
+
+   /* if ('serviceWorker' in navigator){
+        try{
+            navigator.serviceWorker.register('sw.js');
+            console.log('sw registered');
+        }catch(error)
+        {
+            console.log('sw failed');
+        }
+    }
 
     // updateSources();
-});
-async function updateSources() {
+
+/*async function updateSources() {
     const url = await fetch('https://newsapi.org/v2/sources');
     let response = await ajaxCall(url);
     sourceSelector.innerHTML = json.sources
         .map(src => '<option value="${src.id}">${src.name}</option>').join('\n');
+}*/
+
+});
+window.addEventListener('online', () => location.reload());
+
+async function registerSW() {
+  if ('serviceWorker' in navigator) {
+    try {
+      await navigator.serviceWorker.register('./sw.js');
+    } catch (e) {
+      console.log(`SW registration failed`);
+    }
+  }
 }
 async function updateNews() {
 
