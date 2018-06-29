@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>WELCOME</h1>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script type = "text/javascript">
+function ajaxCall(url, type, successCallback, errorCallback){
+    $.ajax({
+        type: type,
+        url: url,
+        success: function(data)
+        {
+            successCallback(data);
+        },
+        error: function(xhr, status, error){
+            errorCallback(error);
+        }
+    })
+} 
+
+    $(document).ready(function(){
+        console.log('doc ready!');
+        $('#submit').click(function(){
+            let url = 'https://newsapi.org/v2/everything?q=bitcoin&sortBy=publishedAt&apiKey=3bc0fcb13a634a4ba0db6bf6603e35a1';
+            
+            ajaxCall(url, 'GET', function(data){
+                 for (let item in data['articles']){
+                        $('#news').append(
+                            "<li>" + data['articles'][item]['description']+"</li>"
+                        );
+                    } 
+             }, function(error){
+                console.log(error);
+             }); 
+            //ajaxCall(url, 'GET', apiAjaxSuccessHandler, apiAjaxErrorHandler);
+
+        } );
+    
+});
+
+function apiAjaxErrorHandler(error){
+
+}
+
+function apiAjaxSuccessHandler(data){
+    for (let item in data['articles']){
+        $('#news').append(
+            "<li>" + data['articles'][item]['description']+"</li>"
+        );
+    } 
+}
+</script>
+
+<h1> NEWS</h1>
+<ol id="news"></ol>
+<a href="#" id="submit"> get news</a>
+</body>
+</html>
