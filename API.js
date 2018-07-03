@@ -7,7 +7,7 @@ const sourceSelector = document.querySelector('#sourceSelector');
 window.addEventListener('load', e => {
     updateNews();
     update();
-    registerSW();
+   // registerSW();
 
    /* if ('serviceWorker' in navigator){
         try{

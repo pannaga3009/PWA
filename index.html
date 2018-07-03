@@ -1658,8 +1658,19 @@
                 </div>
             </div>
         </div>
-        
-        
+        <script>
+        if ('serviceWorker' in navigator) {
+           
+              navigator.serviceWorker.register('./sw.js').then(function(){
+                console.log("Service Worker Registered");
+              }).catch( e => {
+                  console.log(e);
+              console.log(`SW registration failed`);
+            });
+              
+            
+          }
+        </script>
         
         <!-- jquery Core-->
         <script src="assets/js/jquery-2.1.4.min.js"></script>
