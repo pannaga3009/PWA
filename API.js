@@ -7,7 +7,27 @@ const sourceSelector = document.querySelector('#sourceSelector');
 window.addEventListener('load', e => {
     updateNews();
     update();
-   // registerSW();
+    check_empty();
+    div_show();
+    div_hide();
+    div_hide1();
+    div_show1();
+   // var byteString = atob(url);
+   // var arrayBufferWithPNG = new ArrayBuffer(byteString.length);
+    var blob = new Blob([arrayBufferWithPNG], { type: "image/png" }),
+        url = URL.createObjectURL(blob),
+        img = new Image();
+
+    img.onload = function () {
+        URL.revokeObjectURL(this.src);     // clean-up memory
+        document.body.appendChild(this);   // add image to DOM
+    }
+    img.src = url;   
+                            // can now "stream" the bytes
+
+
+
+// registerSW();
 
    /* if ('serviceWorker' in navigator){
         try{
@@ -85,7 +105,35 @@ async function ajaxCall(url) {
 }
 
 
+     
 
+// Validating Empty Field
+function check_empty() {
+    if (document.getElementById('name').value == "" || document.getElementById('email').value == "" || document.getElementById('msg').value == "") {
+    alert("Fill All Fields !");
+    } else {
+    document.getElementById('form').submit();
+    alert("Form Submitted Successfully...");
+    }
+    }
+
+
+    
+    //Function To Display Popup
+    function div_show() {
+    document.getElementById('abc').style.display = "block";
+    }
+    //Function to Hide Popup
+    function div_hide(){
+    document.getElementById('abc').style.display = "none";
+    }
+
+    function div_hide1(){
+        document.getElementById('bcd').style.display = "none";
+        }
+        function div_show1() {
+            document.getElementById('bcd').style.display = "block";
+            } 
 
 
 /* function createArt(article){
