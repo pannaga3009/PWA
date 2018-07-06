@@ -12,6 +12,8 @@ window.addEventListener('load', e => {
     div_hide();
     saveValues();
     loadValues();
+    buttonToggleFun.defaultPhase();
+    buttonToggleFun.loggedInPhase();
     //div_hide1();
     //div_show1();
    // var byteString = atob(url);
@@ -136,10 +138,14 @@ function check_empty() {
     //Function To Display Popup
     function div_show() {
     document.getElementById('abc').style.display = "block";
+    document.getElementById('login').style.display = "none";
+    document.getElementById('logout').style.display = "block";
     }
     //Function to Hide Popup
     function div_hide(){
     document.getElementById('abc').style.display = "none";
+    document.getElementById('login').style.display = "block";
+    document.getElementById('logout').style.display = "none";
     }
 
   
@@ -211,21 +217,30 @@ function saveValues()
  var buttonToggleFun = function(){
     showLogin = function(){
         //display loginButton
+        div_show();
+        
     }
     showLogout = function(){
         //display logout
+        div_show();
+        
     }
     showSignup = function(){
         //display signup
+        div_show();
+        
     }
     hideLogin = function(){
         //hide loginButton
+        div_hide();
     }
     hideLogout = function(){
         //hide logout
+        div_hide();
     }
     hideSignup = function(){
         //hide signup
+        div_hide();
     }
     return {
         defaultPhase: function(){

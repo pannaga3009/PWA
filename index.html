@@ -102,8 +102,11 @@
 <!--<script src="js/my_js.js"></script>
 </head> -->
 <!-- Body Starts Here -->
-
-
+<div id="login">
+<button id="popup" onclick="div_show()">Login</button>
+<button onclick="buttonToggleFun.defaultPhase()">Sign Up</button>
+</div>
+<!--<button onclick="showLogout()">Logout</button> -->
     <div id="abc">
         <!-- Popup Div Starts Here -->
         <div id="popupContact">
@@ -121,17 +124,22 @@
                 <button onclick="saveValues()" type="button">✓</button>
                 
                 <!--<button onclick="loadValues()"  type="button">Load</button>-->
+               
+                
+                
                 <p id="out"></p>
             </form>
            
 
         </div>
         <!-- Popup Div Ends Here -->
+
     </div>
     <!-- Display Popup Button -->
     
-    <button id="popup" onclick="div_show()">Login</button>
-   
+   <div id ="logout">
+<button onclick="buttonToggleFun.defaultPhase()">Logout</button>
+</div>
   
 
 <!-- <li><a href="#">Register</a></li>
