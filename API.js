@@ -10,11 +10,13 @@ window.addEventListener('load', e => {
     check_empty();
     div_show();
     div_hide();
-    div_hide1();
-    div_show1();
+    saveValues();
+    loadValues();
+    //div_hide1();
+    //div_show1();
    // var byteString = atob(url);
    // var arrayBufferWithPNG = new ArrayBuffer(byteString.length);
-    var blob = new Blob([arrayBufferWithPNG], { type: "image/png" }),
+  /*  var blob = new Blob([arrayBufferWithPNG], { type: "image/png" }),
         url = URL.createObjectURL(blob),
         img = new Image();
 
@@ -23,7 +25,7 @@ window.addEventListener('load', e => {
         document.body.appendChild(this);   // add image to DOM
     }
     img.src = url;   
-                            // can now "stream" the bytes
+                            // can now "stream" the bytes*/
 
 
 
@@ -49,7 +51,19 @@ window.addEventListener('load', e => {
 }*/
 
 });
+
+
 window.addEventListener('online', () => location.reload());
+function saveValues()
+{
+	localStorage._name = document.getElementById("name").value;
+	localStorage._email = document.getElementById("email").value.toString();
+}
+function loadValues()
+{
+	document.getElementById("name").value = localStorage._name;
+	document.getElementById("email").value = localStorage._email;
+}
 
 async function registerSW() {
   if ('serviceWorker' in navigator) {
@@ -118,7 +132,7 @@ function check_empty() {
     }
 
 
-    
+
     //Function To Display Popup
     function div_show() {
     document.getElementById('abc').style.display = "block";
@@ -128,14 +142,7 @@ function check_empty() {
     document.getElementById('abc').style.display = "none";
     }
 
-    function div_hide1(){
-        document.getElementById('bcd').style.display = "none";
-        }
-        function div_show1() {
-            document.getElementById('bcd').style.display = "block";
-            } 
-
-
+  
 /* function createArt(article){
 $("#splNewsDiv .news_img").attr('src',article.urlToImage);
 $("#splNewsDiv .col-md-5 .title1").text(article.title);
@@ -167,3 +174,70 @@ $("#ajaxNews").append($("#newsMainDiv").html());
  return true;
 }
 */
+
+function saveValues()
+    {
+        
+        localStorage._n=document.getElementById("name").value;
+        localStorage._e=document.getElementById("email").value.toString();
+    }
+    function loadValues()
+    {
+        document.getElementById("name").value=localStorage._n;
+        document.getElementById("email").value=localStorage._e;
+    }
+
+/* var buttonToggle = {
+        showLogin: function(){
+            //display loginButton
+        },
+        showLogout: function(){
+            //display logout
+        },
+        showSignup: function(){
+            //display signup
+        },
+        hideLogin: function(){
+            //hide loginButton
+        },
+        hideLogout: function(){
+            //hide logout
+        },
+        hideSignup: function(){
+            //hide signup
+        },
+ };*/
+ 
+ var buttonToggleFun = function(){
+    showLogin = function(){
+        //display loginButton
+    }
+    showLogout = function(){
+        //display logout
+    }
+    showSignup = function(){
+        //display signup
+    }
+    hideLogin = function(){
+        //hide loginButton
+    }
+    hideLogout = function(){
+        //hide logout
+    }
+    hideSignup = function(){
+        //hide signup
+    }
+    return {
+        defaultPhase: function(){
+            hideLogout();
+            showLogin();
+            showSignup();
+        },
+        loggedInPhase: function(){
+            hideLogin();
+            hideSignup();
+            showLogout();
+        }
+    }
+};
+

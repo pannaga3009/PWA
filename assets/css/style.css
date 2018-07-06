@@ -138,6 +138,14 @@ h7 {
  * LINK STYLE
  *------------------------------------------*/
 
+input[type="text"],
+input[type="password"] {
+    width: 60%;
+}
+
+input {
+    margin: .4rem 0;
+}
 a {
     color              : #010101;
     text-decoration    : none;
@@ -243,6 +251,8 @@ section {
 .header-section .date {
     border-bottom: 1px solid #000;
     padding-bottom: 15px;
+    font-size: 18px;
+    
 }
 
 .header-section .time {
