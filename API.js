@@ -140,12 +140,14 @@ function check_empty() {
     document.getElementById('abc').style.display = "block";
     document.getElementById('login').style.display = "none";
     document.getElementById('logout').style.display = "block";
+   //document.getElementById('signup').style.display = "block";
     }
     //Function to Hide Popup
     function div_hide(){
     document.getElementById('abc').style.display = "none";
     document.getElementById('login').style.display = "block";
     document.getElementById('logout').style.display = "none";
+   // document.getElementById('signup').style.display = "none";
     }
 
   
@@ -228,6 +230,7 @@ function saveValues()
     showSignup = function(){
         //display signup
         div_show();
+        
         
     }
     hideLogin = function(){

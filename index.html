@@ -103,13 +103,29 @@
 </head> -->
 <!-- Body Starts Here -->
 <div id="login">
-<button id="popup" onclick="div_show()">Login</button>
-<button onclick="buttonToggleFun.defaultPhase()">Sign Up</button>
+<button id="popup1" onclick="div_show()">Login</button>
+<div id= "signup">
+<button id="popup2" onclick="div_show()">Sign Up</button>
+
+</div>
+<!--<button onclick="buttonToggleFun.defaultPhase()">Sign Up</button>-->
 </div>
 <!--<button onclick="showLogout()">Logout</button> -->
     <div id="abc">
         <!-- Popup Div Starts Here -->
-        <div id="popupContact">
+        <div id="popupSignup">
+                <form action="" id="form2" method="post" name="form2">
+                        <input id="fname" name="fname" placeholder="First Name" type="text" required >
+                        <input id="lname" name="lname" placeholder="Last Name" type="text" required >
+                        <input id="email" name="email" placeholder="Email" type="text" required >
+                        <input type="password" id="password" name="password"
+                       minLength="8" required
+                       placeholder="8 characters minimum" />
+                        <!--<a href="javascript:%20check_empty()" id="submit">submit</a>-->
+                        <button onclick="saveValues()" type="button">✓</button>
+                </form>
+            </div>
+        <div id="popupLogin">
             <!-- Contact Us Form -->
             <form action="igg.jjj" id="form" method="post" name="form">
                <!-- <img id="close" src="images/3.png" onclick="div_hide()"> -->
@@ -124,23 +140,23 @@
                 <button onclick="saveValues()" type="button">✓</button>
                 
                 <!--<button onclick="loadValues()"  type="button">Load</button>-->
-               
-                
-                
                 <p id="out"></p>
+                
             </form>
            
 
         </div>
         <!-- Popup Div Ends Here -->
-
     </div>
     <!-- Display Popup Button -->
     
    <div id ="logout">
 <button onclick="buttonToggleFun.defaultPhase()">Logout</button>
 </div>
+
+
   
+
 
 <!-- <li><a href="#">Register</a></li>
                          <li class="dropdown lang">
@@ -287,7 +303,7 @@
         <h2><a href="category.html" target="_self">Mobile</a></h2>
     </div> -->
     
-    <!----article_title------>
+    <!--article_title-->
    <!-- <div class="category_article_wrapper">
         <div class="row">
             <div class="col-md-6">
@@ -296,7 +312,7 @@
                                                                src="assets/img/cat-mobi-left-1.jpg" alt="feature-top">
                     </a>
                 </div>-->
-                <!----top_article_img------>
+                <!--top_article_img-->
             
                        <!-- <div class="col-md-6">-->
        <!--         <span class="tag purple">Mobile</span>
@@ -462,11 +478,6 @@
                    <!-- <div class="article_date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></div>-->
                     <!--article_date-->
                     <!-- article_date -->
-
-               <!--     <div class="category_article_content">
-                        Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                        procrastinate B2C users after.
-                    </div> -->
                     <!-- category_article_content -->
 
                  <!--   <div class="media_social">
@@ -639,10 +650,7 @@
                 <!--article_date-->
                 <!-- category_article_wrapper -->
 
-              <!--  <div class="category_article_content">
-                    Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                    procrastinate.
-                </div> -->
+              
                 <!-- category_article_content -->
 
             <!--    <div class="media_social">
@@ -682,11 +690,7 @@
                 <!--article_date-->
                 <!-- article_date -->
 
-                <!--<div class="category_article_content">
-                    Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                    procrastinate.
-                </div>-->
-                <!-- category_article_content -->
+               
 
                 <!--<div class="media_social">
                     <span><a href="#"><i class="fa fa-share-alt"></i>424 </a> Shares</span>
@@ -721,10 +725,7 @@
                 <!--article_date-->
                 <!-- article_date -->
 
-               <!-- <div class="category_article_content">
-                    Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                    procrastinate.
-                </div>-->
+               
                 <!-- category_article_content -->
 
             <!--    <div class="media_social">
@@ -781,9 +782,7 @@
                     <!--category_article_date-->
                     <!-- category_article_date -->
 
-             <!--       <div class="category_article_content">
-                        Collaboratively administrate empowered markets via plug-and-play networks.
-                    </div> -->
+             
                     <!-- category_article_content -->
 
               <!--      <div class="media_social">
@@ -859,7 +858,7 @@
                     <!-- category_article_title -->
 
                    <!-- <div class="category_article_date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></div> -->
-                    <!----category_article_date------>
+                    <!--category_article_date-->
                     <!-- category_article_date -->
 
                    <!-- <div class="category_article_content">
