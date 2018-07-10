@@ -5,15 +5,16 @@ const sourceSelector = document.querySelector('#sourceSelector');
 
 
 window.addEventListener('load', e => {
+    
     updateNews();
     update();
     check_empty();
-    div_show();
-    div_hide();
+  // buttonToggleFun();
+   div_show();
+   div_hide();
     saveValues();
     loadValues();
-    buttonToggleFun.defaultPhase();
-    buttonToggleFun.loggedInPhase();
+    
     //div_hide1();
     //div_show1();
    // var byteString = atob(url);
@@ -136,20 +137,7 @@ function check_empty() {
 
 
     //Function To Display Popup
-    function div_show() {
-    document.getElementById('abc').style.display = "block";
-    document.getElementById('login').style.display = "none";
-    document.getElementById('logout').style.display = "block";
-   //document.getElementById('signup').style.display = "block";
-    }
-    //Function to Hide Popup
-    function div_hide(){
-    document.getElementById('abc').style.display = "none";
-    document.getElementById('login').style.display = "block";
-    document.getElementById('logout').style.display = "none";
-   // document.getElementById('signup').style.display = "none";
-    }
-
+  
   
 /* function createArt(article){
 $("#splNewsDiv .news_img").attr('src',article.urlToImage);
@@ -214,8 +202,25 @@ function saveValues()
         hideSignup: function(){
             //hide signup
         },
- };*/
- 
+ }; */
+ function div_show() {
+    document.getElementById('abc').style.display = "block";
+    //document.getElementById('efg').style.display = "block";
+    document.getElementById('login').style.display = "none";
+     document.getElementById('signup').style.display = "none";
+    
+    document.getElementById('logout').style.display = "block";
+   
+    }
+    //Function to Hide Popup
+    function div_hide(){
+    document.getElementById('abc').style.display = "none";
+    //document.getElementById('efg').style.display = "none";
+    document.getElementById('login').style.display = "block";
+    document.getElementById('logout').style.display = "none";
+    document.getElementById('signup').style.display = "block";
+    }
+
  var buttonToggleFun = function(){
     showLogin = function(){
         //display loginButton
@@ -258,4 +263,3 @@ function saveValues()
         }
     }
 };
-
