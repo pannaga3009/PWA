@@ -9,9 +9,10 @@ window.addEventListener('load', e => {
     updateNews();
     update();
     check_empty();
-  // buttonToggleFun();
-   div_show();
-   div_hide();
+  buttonToggleFun.toggle('defualt');
+  buttonToggleFun.defaultView();
+ //  div_show();
+  // div_hide();
     saveValues();
     loadValues();
     
@@ -203,12 +204,12 @@ function saveValues()
             //hide signup
         },
  }; */
- function div_show() {
-    document.getElementById('abc').style.display = "block";
-    //document.getElementById('efg').style.display = "block";
-    document.getElementById('login').style.display = "none";
-     document.getElementById('signup').style.display = "none";
+ /*function div_show() {
     
+     document.getElementById('signup').style.display = "none";
+      //display loginButton
+      document.getElementById('abc').style.display = "block";
+      document.getElementById('login').style.display = "none";
     document.getElementById('logout').style.display = "block";
    
     }
@@ -221,45 +222,74 @@ function saveValues()
     document.getElementById('signup').style.display = "block";
     }
 
+    */
+
+document.getElementById("login").onclick = function() {
+    console.log('inside click event');
+    buttonToggleFun.showForm('login');
+    buttonToggleFun.hideForm('signup');
+};
+document.getElementById("signup").onclick = function() {
+    console.log('inside click event');
+    buttonToggleFun.showForm('signup');
+    buttonToggleFun.hideForm('login');
+};
+
+
  var buttonToggleFun = function(){
-    showLogin = function(){
-        //display loginButton
-        div_show();
-        
+    loginForm = function(hide){
+       //to display login form
+       if(hide){
+        document.getElementById('abc').style.display = "block";
+       }else{
+        document.getElementById('abc').style.display = "none";
+       }               
+         //display loginButton
+        //document.getElementById('signup').style.display = "block";
     }
-    showLogout = function(){
-        //display logout
-        div_show();
-        
+    signupForm = function(hide){
+        if(hide){
+            document.getElementById('efg').style.display = "block";
+        }else{
+            document.getElementById('efg').style.display = "none";
+        } 
     }
-    showSignup = function(){
-        //display signup
-        div_show();
-        
-        
-    }
-    hideLogin = function(){
-        //hide loginButton
-        div_hide();
-    }
-    hideLogout = function(){
-        //hide logout
-        div_hide();
-    }
-    hideSignup = function(){
-        //hide signup
-        div_hide();
-    }
-    return {
-        defaultPhase: function(){
-            hideLogout();
-            showLogin();
-            showSignup();
-        },
-        loggedInPhase: function(){
-            hideLogin();
-            hideSignup();
-            showLogout();
+    buttonToggle = function(mode){
+        switch(mode){
+            case 'defualt': 
+                 document.getElementById('logout1').style.display = "none";
+                 document.getElementById('signup').style.display = "block";
+                 document.getElementById('login').style.display = "block";
+                 break;
+            case 'loggedin':
+                document.getElementById('logout1').style.display = "block";
+                document.getElementById('signup').style.display = "none";
+                document.getElementById('login').style.display = "none";    
         }
     }
-};
+    return {
+        toggle: function(mode){
+            buttonToggle(mode);
+        },
+        defaultView: function(){
+            loginForm(false);
+            signupForm(false);
+        },
+        showForm: function(formtype){
+            if(formtype === 'login'){
+                loginForm(true);
+            }else{
+                signupForm(true);
+            }
+        },
+        hideForm: function(formtype){
+            if(formtype === 'login'){
+                loginForm(false);
+            }else{
+                signupForm(false);
+            }
+        },
+    }
+}();
+
+

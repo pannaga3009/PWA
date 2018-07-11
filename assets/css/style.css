@@ -137,7 +137,22 @@ h7 {
 /* --------------------------------------
  * LINK STYLE
  *------------------------------------------*/
-
+ /*#abc{
+    margin: 0; 
+    /*margin-left: 40%; 
+    margin-right: 40%;
+    margin-top: 50px;
+    left: 50%;
+    padding-top: 10px; 
+    width: 20%; 
+    height: 150px; 
+    position: absolute; 
+    background: #FBFBF0; 
+    border: solid #000000 2px; 
+    z-index: 9; 
+    font-family: 'Courier New'; 
+    visibility: hidden; 
+    } */
 input[type="text"],
 input[type="password"] {
     width: 60%;

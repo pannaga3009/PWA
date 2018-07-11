@@ -39,6 +39,13 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    
+ 
+
+
+
+   
+    
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar">
@@ -104,31 +111,22 @@
 </head> -->
 <!-- Body Starts Here -->
 <div id="login">
-<button id="popup1" onclick="div_show()">Login</button>
+<button id="popup1">Login</button>
 </div>
 <div id= "signup">
-<button id="popup2" onclick="div_show()">Sign Up</button>
+<button id="popup2" onclick="">Sign Up</button>
 </div>
+
+
 <!--<button onclick="buttonToggleFun.defaultPhase()">Sign Up</button>-->
 <!--<button onclick="showLogout()">Logout</button> -->
-    <div id="abc">
+    
         <!-- Popup Div Starts Here -->
-       <!--<div id="popupSignup"></div> 
-                <form action="" id="form1" method="post" name="form1">
-                        <input id="fname" name="fname" placeholder="First Name" type="text" required >
-                        <input id="lname" name="lname" placeholder="Last Name" type="text" required >
-                        <input id="email" name="email" placeholder="Email" type="text" required >
-                        <input type="password" id="password" name="password"
-                       minLength="8" required
-                       placeholder="8 characters minimum" />
-                        <a href="javascript:%20check_empty()" id="submit">submit</a>-->
-                       <!-- <button onclick="saveValues()" type="button">✓</button>
-                </form>
-            </div>-->
+       
             
        <!-- </div> -->
     <!-- <div id= "efg"> -->
-        
+            <div id="abc">
             <!-- Contact Us Form -->
             <form action="" id="form2" method="post" name="form2">
             <!--    <img id="close" src="images/3.png" onclick="div_hide()"> -->
@@ -153,11 +151,26 @@
    
     <!-- Display Popup Button -->
     
-   <div id ="logout">
+   <div id ="logout1">
 <button onclick="buttonToggleFun.defaultPhase()">Logout</button>
+
 </div>
-
-
+<div id="efg">
+        <form action="" id="form1" method="post" name="form1">
+                <input id="fname" name="fname" placeholder="First Name" type="text" required >
+                <input id="lname" name="lname" placeholder="Last Name" type="text" required >
+                <input id="email" name="email" placeholder="Email" type="text" required >
+                <input type="password" id="password" name="password"
+               minLength="8" required
+               placeholder="8 characters minimum" />
+                <a href="javascript:%20check_empty()" id="submit">submit</a>
+               <!-- <button onclick="saveValues()" type="button">✓</button> -->
+        </form>
+    </div>
+    <div id ="close">
+            <button onclick="buttonToggleFun.defaultPhase()">close</button>
+            
+            </div>
   
 
 
