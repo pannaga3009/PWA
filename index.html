@@ -153,8 +153,10 @@
     
    <div id ="logout1">
 <button onclick="buttonToggleFun.defaultPhase()">Logout</button>
-
 </div>
+
+
+
 <div id="efg">
         <form action="" id="form1" method="post" name="form1">
                 <input id="fname" name="fname" placeholder="First Name" type="text" required >
@@ -167,10 +169,10 @@
                <!-- <button onclick="saveValues()" type="button">✓</button> -->
         </form>
     </div>
-    <div id ="close">
+    <!--<div id ="close">
             <button onclick="buttonToggleFun.defaultPhase()">close</button>
             
-            </div>
+            </div>-->
   
 
 
@@ -233,10 +235,9 @@
                         <ul class="nav navbar-nav main-nav">
                             <li class="active"><a href="index.html">HOME</a></li>
                          <li> <a href="popular_news.html ">POPULAR NEWS</a></li>
-                           <li><a href="user_news.html">USER NEWS</a></li> 
-                           <li><a href="post_news.html">POST NEWS</a></li>
+                           <li><a href="user_news.html">USER NEWS</a></li>
                           <li><a href="editor.html">EDITOR'S PICKS</a></li>
-                          <select id="sourceSelector"></select>
+                
                        <!--<li><a href=""></a></li> 
                            <li class="dropdown m-menu-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">SOURCE
                                 
@@ -1687,13 +1688,23 @@
                                     <form action="" method="post">
                                         <div>
                                         <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">
-                                        Hi! Type your comment here!
-                                        </textarea>
-                                        </div>
-                                        <input type="submit" value="Submit">
+                                                                                   
+                                                                    </textarea>
+                                                                    
+                                                                </div>                       
+                                      <!--  <div id="alert-success" class="alert alert-success">
+                                                Yay, submission went well!
+                                                <a class="close" data-dismiss="alert" href="#">&times;</a>
+                                            </div> -->
+                                      
+                                     <!--   <pre id="contents"></pre> -->
+                                       <!-- <button id="btnSave" onclick="saveData()">Save</button>
+                                        <button onclick="localStorage.setItem('comments','');showLS()">Clear</button>
+                                        <button onclick="showLS()">Contents</button>-->
+                                        <button onclick="saveComments()" type="button">Submit</button>
                                         </form>
-                                   
-                            </div>
+                                       
+                                        </div>
                         </div>
         
                     </div>
@@ -1727,11 +1738,17 @@
                                     <a href="#"></a>Comments</span>
                                     <form action="" method="post">
                                         <div>
-                                        <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">
-                                        Hi! Type your comment here!
-                                        </textarea>
+                                        <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">          
+                                    </textarea>
+                                    
                                         </div>
-                                        <input type="submit" value="Submit">
+                                       <!-- <pre id="contents"></pre> -->
+            
+                                        <!--  <input type="submit" value="Submit"> -->
+                                    <!--    <button id="btnSave" onclick="saveData()">Save</button>
+                                                <button onclick="localStorage.setItem('comments','');showLS()">Clear</button>
+                                                <button onclick="showLS()">Contents</button> -->
+                                                <button onclick="saveComments()" type="button">Submit</button>  
                                         </form>
                             </div>
                         </div>

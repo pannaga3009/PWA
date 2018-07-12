@@ -8,14 +8,17 @@ window.addEventListener('load', e => {
     
     updateNews();
     update();
-    check_empty();
-  buttonToggleFun.toggle('defualt');
+   check_empty();
+  buttonToggleFun.toggle('default');
   buttonToggleFun.defaultView();
+  saveComments();
  //  div_show();
   // div_hide();
     saveValues();
-    loadValues();
-    
+   // loadValues();
+   
+     //   saveData();
+       // showLS();
     //div_hide1();
     //div_show1();
    // var byteString = atob(url);
@@ -60,14 +63,15 @@ window.addEventListener('load', e => {
 window.addEventListener('online', () => location.reload());
 function saveValues()
 {
-	localStorage._name = document.getElementById("name").value;
-	localStorage._email = document.getElementById("email").value.toString();
+	localStorage._n=document.getElementById("name").value;
+    localStorage._e=document.getElementById("email").value.toString();
+    
 }
-function loadValues()
+/*function loadValues()
 {
 	document.getElementById("name").value = localStorage._name;
 	document.getElementById("email").value = localStorage._email;
-}
+}*/
 
 async function registerSW() {
   if ('serviceWorker' in navigator) {
@@ -135,7 +139,9 @@ function check_empty() {
     }
     }
 
-
+function showAlert(){
+    alert ("Yay submission complete!");
+}
 
     //Function To Display Popup
   
@@ -172,18 +178,51 @@ $("#ajaxNews").append($("#newsMainDiv").html());
 }
 */
 
-function saveValues()
+function saveComments()
     {
+       // localStorage._cm=document.getElementById("comments").value;
         
-        localStorage._n=document.getElementById("name").value;
-        localStorage._e=document.getElementById("email").value.toString();
+            var obj={comments:" "};
+                obj.comments=document.getElementById('comments').value;
+                //obj.phone=document.getElementById('phone').value;
+        
+            var listObj=localStorage.getItem('comments');
+            if(listObj!=null){
+              listObj=JSON.parse(listObj); //this will give array of object
+              listObj.push(obj);
+            }else{
+              listObj=[obj]; //first time 
+            }
+           // Save Data in Local Storage 
+            localStorage.setItem('comments',JSON.stringify(listObj)); 
+           //Please check Local Storage which will be like
+            //[{"name":"Anand","phone":"6546456456"}{"name":"Andy","phone":"78688"}]
+        
+        
+       // localStorage._n=document.getElementById("name").value;
+       //localStorage._e=document.getElementById("email").value.toString();
+       /*var ArrayData =[];       
+       
+// store array to localstorage
+localStorage.setItem("comments",  JSON.stringify(ArrayData));
+// retrieve stored data (JSON stringified) and convert
+var storedData = localStorage.getItem("ArrayData ");
+if (storedData) {
+    ArrayData = JSON.parse(storedData);
+} */
+      
+        
     }
-    function loadValues()
+    function loadComments()
     {
-        document.getElementById("name").value=localStorage._n;
-        document.getElementById("email").value=localStorage._e;
+       // document.getElementById("name").value=localStorage._n;
+       // document.getElementById("email").value=localStorage._e;
+        document.getElementById("comments").value=localStorage._cm;
     }
 
+   
+  
+      
 /* var buttonToggle = {
         showLogin: function(){
             //display loginButton
@@ -256,7 +295,7 @@ document.getElementById("signup").onclick = function() {
     }
     buttonToggle = function(mode){
         switch(mode){
-            case 'defualt': 
+            case 'default': 
                  document.getElementById('logout1').style.display = "none";
                  document.getElementById('signup').style.display = "block";
                  document.getElementById('login').style.display = "block";
