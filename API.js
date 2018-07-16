@@ -12,9 +12,10 @@ window.addEventListener('load', e => {
   buttonToggleFun.toggle('default');
   buttonToggleFun.defaultView();
   saveComments();
- //  div_show();
-  // div_hide();
+   div_show();
+   div_hide();
     saveValues();
+    myFunction();
    // loadValues();
    
      //   saveData();
@@ -143,7 +144,17 @@ function showAlert(){
     alert ("Yay submission complete!");
 }
 
-    //Function To Display Popup
+function div_show() {
+    document.getElementById('usernews').style.display = "block";
+    }
+    //Function to Hide Popup
+    function div_hide(){
+    document.getElementById('usernews').style.display = "none";
+    }
+
+
+
+//Function To Display Popup
   
   
 /* function createArt(article){
@@ -180,9 +191,9 @@ $("#ajaxNews").append($("#newsMainDiv").html());
 
 function saveComments()
     {
-       // localStorage._cm=document.getElementById("comments").value;
+        localStorage._cm=document.getElementById("comments").value;
         
-            var obj={comments:" "};
+            /*var obj={comments:" "};
                 obj.comments=document.getElementById('comments').value;
                 //obj.phone=document.getElementById('phone').value;
         
@@ -331,4 +342,28 @@ document.getElementById("signup").onclick = function() {
     }
 }();
 
+//User Image UpLoad
+/*$(document).ready(function(){
 
+	var thumb = $('#thumb');	
+   
+	new AjaxUpload('imageUpload', {
+		action: $('#userimage').attr('action'),
+		name: 'image',
+		onSubmit: function(file, extension) {
+			$('#preview').addClass('loading');
+		},
+		onComplete: function(file, response) {
+			thumb.load(function(){
+				$('#preview').removeClass('loading');
+				thumb.unbind();
+			});
+			thumb.attr('src', response);
+		}
+	});
+});*/
+
+function myFunction() {
+    var x = document.getElementById("imageUpload1").required;
+    document.getElementById("demo").innerHTML = x;
+}
