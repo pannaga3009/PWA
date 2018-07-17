@@ -12,23 +12,23 @@
 </head>
 
 <body>
-  <header>
-    <h1>Alternative news</h1>
-    <div id="content">
-      <div id="left">
-         <div id="object1">some stuff</div>
-         <div id="object2">some more stuff</div>
+    <form id="target" action="destination.html">
+        <input type="text" value="Hello there">
+        <input type="submit" value="Go">
+      </form>
+      <div id="other">
+        Trigger the handler
       </div>
-    
-      <div id="right">
-         <div id="object3">unas cosas</div>
-         <div id="object4">mas cosas para ti</div>
-      </div>
-    </div>
-    <select id="sources"></select>
-  </header>
-  <main></main>
-  <script src="API.js"></script>
+      <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">
+       </script>
+  <!--<script src="API.js"></script>-->
+  <script> $( "#target" ).submit(function( event ) {
+      alert( "Handler for .submit() called." );
+      event.preventDefault();
+    });</script>
 </body>
 
 </html>

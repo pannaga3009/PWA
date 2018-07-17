@@ -15,7 +15,7 @@ window.addEventListener('load', e => {
    div_show();
    div_hide();
     saveValues();
-    myFunction();
+    
    // loadValues();
    
      //   saveData();
@@ -341,7 +341,36 @@ document.getElementById("signup").onclick = function() {
         },
     }
 }();
+var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
 
+// Open (or create) the database
+var open = indexedDB.open("MyDatabase", 1);
+
+// Create the schema
+open.onupgradeneeded = function() {
+    var db = open.result;
+    var store = db.createObjectStore("MyObjectStore", {keyPath: "id"});
+    var index = store.createIndex("NewsIndex", ["news.username", "news.newstitle"]);
+};
+open.onsuccess = function() {
+    // Start a new transaction
+    var db = open.result;
+    var tx = db.transaction("MyObjectStore", "readwrite");
+    var store = tx.objectStore("MyObjectStore");
+    var index = store.index("NewsIndex");
+     // Add some data
+   /* store.put({id: 12345, name: {first: "John", last: "Doe"}, age: 42});
+    store.put({id: 67890, name: {first: "Bob", last: "Smith"}, age: 35});
+    
+    // Query the data
+    var getJohn = store.get(12345);
+   
+
+    getJohn.onsuccess = function() {
+        console.log(getJohn.result.name.first);  // => "John" */
+    };
+
+  
 //User Image UpLoad
 /*$(document).ready(function(){
 
@@ -363,7 +392,39 @@ document.getElementById("signup").onclick = function() {
 	});
 });*/
 
-function myFunction() {
+//function to upload image files
+/*function myFunction() {
     var x = document.getElementById("imageUpload1").required;
     document.getElementById("demo").innerHTML = x;
+}*/
+
+/* Create XHR
+var xhr = new XMLHttpRequest(),
+    blob;
+
+xhr.open("GET", "cam_left1.jpg", true);
+// Set the responseType to blob
+xhr.responseType = "blob";
+
+xhr.addEventListener("load", function () {
+    if (xhr.status === 200) {
+        console.log("Image retrieved");
+        
+        // File as response
+        blob = xhr.response;
+
+        // Put the received blob into IndexedDB
+        putElephantInDb(blob);
+    }
+}, false);
+// Send XHR
+xhr.send();*/
+function ussubmit() {
+    var name = document.getElementById("username").value;
+    var newstitle1 = document.getElementById("newstitle").value;
+    console.log("inside ussubmit");
+    document.getElementById("usform").submit(); //form submission
+    alert(" Name : " + name + " n title : " + newstitle1 +  "nn Form Submitted Successfully......");
+   
 }
+    
