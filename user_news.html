@@ -39,7 +39,7 @@
     <![endif]-->
     <script src='https://www.google.com/recaptcha/api.js'></script>
 
-
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 
 
@@ -265,12 +265,7 @@
             <main></main>
             <script src="API.js"></script>
 
-            <script> $( "#usform" ).submit(function( event ) {
-                    alert( "Handler for .submit() called." );
-                    event.preventDefault();
-                  });</script>
-              
-              
+
 
             <section id="feature_news_section" class="feature_news_section">
                 <div class="container">
@@ -290,28 +285,50 @@
                         <button id="close" onclick="div_hide()">X</button>
                         <h2>Post News</h2>
                         <hr>
-                        <input id="username" name="name1" placeholder="Name" type="text">
+                        <input id="username" name="username" placeholder="Name" type="text">
+
                         <textarea id="newstitle" name="newstitle" placeholder="Enter News Title(max 100 char)"></textarea>
                         <textarea id="msg1" name="bdesc" placeholder="Write a few lines about the article(max 250 char)"></textarea>
                         <textarea id="msg2" name="desc" placeholder="Write about article in detail(max 500 char)"></textarea>
-                       
 
 
-                                <!--  <label>Upload Image</label>
+
+                        <!--  <label>Upload Image</label>
                                 <input type="file" size="20" id="imageUpload1" class=" ">
                                 <input type="file" size="20" id="imageUpload2" class=" ">
                                 <input type="file" size="20" id="imageUpload3" class=" ">-->
-                                <button id="ussubmit" type="submit" onclick="ussubmit()">Confirm Post</button>
-                            
+                        <div>
+                            <div id="pub-msg">
+                            </div>
+                            <div id="pub-viewer">
+                            </div>
+                            <ul id="pub-list">
+                            </ul>
+                        </div>
+                        <div class="button-pane">
+                            <input type="button" id="add-button" value="Add Publication" />
+
                         </div>
 
-                      
-                        <p id="demo"></p>
+
+
+
+                        <button id="ussubmit" type="submit" onclick="ussubmit()">Confirm Post</button>
+
                     </form>
+
+
+
                 </div>
-                <!-- Popup Div Ends Here -->
+                <p id="demo"></p>
+
+
             </div>
+
+            <!-- Popup Div Ends Here -->
+
             <!-- Display Popup Button -->
+
             <h1>Click Here To Post News</h1>
             <button id="pop" onclick="div_show()">Post</button>
             <p>Upload image here</p>
