@@ -7,6 +7,7 @@ const staticAssets = [
     '/assets/modules',
     '/API.js',
     '/index.html',
+    '/user_news.html',
     '/images/icons',
     
 ];
