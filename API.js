@@ -128,11 +128,16 @@ async function update() {
         $("#splNewsDiv  .feature_article_content").text(article.description);
 
         $("#ajaxNews").append($("#splNewsDiv").html());
+        // if(  $("#splNewsDiv  .news_img").attr('src', ''))
+        // {
+        // $("#splNewsDiv  .img-responsive").attr('src',article.urlToImage);
+        // }
 
-        $("#splNewsDiv  .news_img").attr('src', '');
+        $("#splNewsDiv  .news_img").attr('src','');
         $("#splNewsDiv  .title1").text('');
         $("#splNewsDiv  .title1").attr('href', '');
         $("#splNewsDiv  .feature_article_content").text('');
+        
     });
 }
 
@@ -558,6 +563,7 @@ $(function () {
             newstitle: newstitle
             
         };
+        
         if (typeof blob != 'undefined')
             obj.blob = blob;
 
@@ -582,6 +588,44 @@ $(function () {
         };
     }
 
+    // function addComments(comments) {
+    //     console.log("addComments arguments:", arguments);
+    //     var obj = {
+    //         comments:comments
+    //     };
+        
+    //     if (typeof blob != 'undefined')
+    //         obj.blob = blob;
+
+    //     var store = getObjectStore(DB_STORE_NAME, 'readwrite');
+    //     var req;
+    //     try {
+    //         req = store.add(obj);
+    //     } catch (e) {
+    //         if (e.name == 'DataCloneError')
+    //             displayActionFailure("This engine doesn't know how to clone a Blob, " +
+    //                 "use Firefox");
+    //         throw e;
+    //     }
+    //     req.onsuccess = function (evt) {
+    //         console.log("Insertion in DB successful");
+    //         displayActionSuccess();
+    //         //displayPubList(store);
+    //     };
+    //     req.onerror = function () {
+    //         console.error("addPublication error", this.error);
+    //         displayActionFailure(this.error);
+    //     };
+    // }
+
+    // $('#addComments').on('click',function (evt) {
+    //     evt.preventDefault();
+    //     console.log("add ...");
+    //     var comments = $('#comments').val();
+        
+
+    // addComments(comments);
+    // });
 
     function displayActionSuccess(msg) {
         msg = typeof msg != 'undefined' ? "Success: " + msg : "Success";
@@ -592,8 +636,36 @@ $(function () {
         msg = typeof msg != 'undefined' ? "Failure: " + msg : "Failure";
         $('#msg').html('<span class="action-failure">' + msg + '</span>');
     }
-
-
+    function save(array_of_files, callback) {
+        openDB(function(db) {
+          var tx = db.transaction('images', 'readwrite');
+          tx.objectStore('images').put(array_of_files, 'key');
+          tx.oncomplete = function() { callback(); };
+          tx.onabort = function() { console.log(tx.error); };
+        });
+      }
+    function load(callback) {
+        openDB(function(db) {
+          var tx = db.transaction('images', 'readonly');
+          var req = tx.objectStore('images').get('key');
+          req.onsuccess = function() {
+            callback(req.result);
+          };
+        });
+      }
+      
+      function openDB(callback) {
+        var open = indexedDB.open('Newsdb');
+        open.onupgradeneeded = function() {
+          var db = open.result;
+          db.createObjectStore('images');
+        };
+        open.onsuccess = function() {
+          var db = open.result;
+          callback(db);
+        };
+        open.onerror = function() { console.log(open.error); };
+      }
     // function deletePublication(key, store) {
     //     console.log("deletePublication:", arguments);
     
@@ -653,17 +725,23 @@ $(function () {
     //     };      
     // }
 
+
+
         $('#addButton').on('click',function (evt) {
             evt.preventDefault();
             console.log("add ...");
             var newstitle = $('#newstitle').val();
             var username = $('#username').val();
+            var inputFileToLoad = $('#inputFileToLoad').arguments;
             if (!newstitle || !username) {
                 displayActionFailure("Required field(s) missing");
                 return;
             }
             addPublication(username, newstitle);
-    
+
+            
+            save(inputFileToLoad,openDb);
+            load(openDb);
             /*var file_input = $('#pub-file');
             var selected_file = file_input.get(0).files[0];
             console.log("selected_file:", selected_file);
@@ -689,6 +767,10 @@ $(function () {
 }); 
 
 
+
+
+// Callback will be called with array of images, or undefined
+// if not previously saved.
 
 
 /*dbPromise.then(function(db) {

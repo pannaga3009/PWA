@@ -362,6 +362,7 @@
                         <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm1.jpg"
                                          alt="Generic placeholder image"></a>
                     </div>
+                    
                    <div class="media-body">
                         <span class="tag purple">Mobile</span>
                         <h3 class="media-heading"><a href="single.html" target="_self">Apple launches photo-centric
@@ -1659,29 +1660,37 @@
  
 <!--<div class="col-md-7">-->
         <div class=row>
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <div id="newsDiv" style="display:none;">
         
-                    <div class="typewrapper">
+                    <div class="feature_article_wrapper">
         
-                        <div class="col-md-12">
+                        <div class="col-md-6">
         
                             <!--<div class="art_title">
                                             <h1><a href="single.html" target="_self" class="title"> </a></h1>
                                            
-                                        </div> -->
-                            <div class="feature_article_title" >
-                                <h1>
-                                    <a href="single.html" target="_self" class="title"> </a>
-                                </h1>
-                            </div>
+                                    </div> -->
+
+                             <div class = "feature_article_inner">       
+                            
                             <div class="img">
-                                <img class="mainNews_img img-responsive top_static_article_img" src="" alt="feature-top">
+                                <img class="mainNews_img img-responsive top_static_article_img" src="" alt="feature-top"   >
+                              
                             </div>
+                            <!--<div class="feature_article_img">
+                                <img class="img-responsive" src="assets/img/feature-static2.jpg" alt="feature-top">
+                            </div> -->
+                            <div class="feature_article_title" >
+                                    <h1>
+                                        <a href="single.html" target="_self" class="title"> </a>
+                                    </h1>
+                                </div>
                             <div class="feature_article_content">
         
                             </div>
-                            <div class="article_social">
+                            </div>
+                            <!-- <div class="article_social">
                                 <span>
                                     <i class="fa fa-comments-o"></i>
                                     <a href="#"></a>Comments</span>
@@ -1700,11 +1709,15 @@
                                      <!--   <pre id="contents"></pre> -->
                                        <!-- <button id="btnSave" onclick="saveData()">Save</button>
                                         <button onclick="localStorage.setItem('comments','');showLS()">Clear</button>
-                                        <button onclick="showLS()">Contents</button>-->
-                                        <button onclick="saveComments()" type="button">Submit</button>
+                                        <button onclick="showLS()">Contents</button>
+                                        <div class="button-pane">
+                                                <input type="button" id="addComments" value="Add Comment" />
+                    
+                                            </div> -->
+                                        <!--<button id="scomments" type="button">Submit</button>
                                         </form>
                                        
-                                        </div>
+                                        </div>-->
                         </div>
         
                     </div>
@@ -1712,46 +1725,50 @@
             </div>
             <!-- </div>-->
         
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <div id="splNewsDiv" style="display:none;">
                     <!--  <div class="row"> -->
         
                     <!--  <div class="col-md-5"> -->
-                    <div class="typewrapper">
+                    <div class="feature_article_wrapper">
         
         
-                        <div class="col-md-12">
+                        <div class="col-md-6">
+                                <div class="img">
+                                        <img class="news_img img-responsive" src="assets/img/feature-static1.jpg" alt="feature-top">
+                                    </div>
+                               <div class= "feature_article_inner" >    
                             <div class="feature_article_title">
                                 <h1>
                                     <a href="single.html" target="_self" class="title1"> </a>
                                 </h1>
                             </div>
-                            <div class="img">
-                                <img class="news_img img-responsive" src="assets/img/feature-static1.jpg" alt="feature-top">
-                            </div>
+                           
                             <div class="feature_article_content">
         
                             </div>
-                            <div class="article_social">
-                                <span>
-                                    <i class="fa fa-comments-o"></i>
-                                    <a href="#"></a>Comments</span>
-                                    <form action="" method="post">
-
-                                        <div>
-                                        <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">          
-                                    </textarea>
-                                    
-                                        </div>
-                                       <!-- <pre id="contents"></pre> -->
-            
-                                        <!--  <input type="submit" value="Submit"> -->
-                                    <!--    <button id="btnSave" onclick="saveData()">Save</button>
-                                                <button onclick="localStorage.setItem('comments','');showLS()">Clear</button>
-                                                <button onclick="showLS()">Contents</button> -->
-                                                <button onclick="saveComments()" type="button">Submit</button>  
-                                        </form>
+                           
                             </div>
+                            <!-- <div class="article_social">
+                                    <span>
+                                        <i class="fa fa-comments-o"></i>
+                                        <a href="#"></a>Comments</span>
+                                        <form action="" method="post">
+    
+                                            <div>
+                                            <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">          
+                                        </textarea>
+                                        
+                                            </div>
+                                           <!-- <pre id="contents"></pre> -->
+                
+                                            <!--  <input type="submit" value="Submit"> -->
+                                        <!--    <button id="btnSave" onclick="saveData()">Save</button>
+                                                    <button onclick="localStorage.setItem('comments','');showLS()">Clear</button>
+                                                    <button onclick="showLS()">Contents</button> 
+                                                    <button onclick="saveComments()" type="button">Submit</button>  
+                                            </form>
+                                </div> -->
                         </div>
                     </div>
                     <!-- </div> -->

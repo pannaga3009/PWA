@@ -753,17 +753,18 @@ section {
 }
 
 .feature_article_inner {
-    background: #fff;
-    position: absolute;
+    background: rgba(255, 255, 255, 0.753);
+    position: center;
     bottom: 0;
-    padding: 15px 30px;
-    left: 10%;
+    padding: 5px 5px;
+    left: 5%;
     width: 80%;
+
 }
 
 .feature_article_content {
     margin-top: 10px;
-    font-size: 15px;
+    font-size: 0px;
 }
 
 .feature_article_date {
