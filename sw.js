@@ -1,8 +1,6 @@
 const staticAssets = [
     '/',
     '/assets/css',
-    '/assets/style.css',
-    '/assets/elements.css',
     '/assets/img',
     '/assets/js',
     '/assets/fonts',
@@ -10,6 +8,8 @@ const staticAssets = [
     '/API.js',
     '/index.html',
     '/user_news.html',
+    '/style.css',
+    '/elements.css',
     '/images/icons',
     
 ];

@@ -4,77 +4,70 @@ const main = document.querySelector('main');
 const sourceSelector = document.querySelector('#sourceSelector');
 
 
-window.addEventListener('load', e => {
-    
+
+
+window.addEventListener('load', () => {
     updateNews();
     update();
-  // check_empty();
- // readAll();
-  buttonToggleFun.toggle('default');
-  buttonToggleFun.defaultView();
-  saveComments();
-   div_show();
-   div_hide();
+    buttonToggleFun.toggle('default');
+    buttonToggleFun.defaultView();
+    saveComments();
+    div_show();
+    div_hide();
     saveValues();
-    //hostReachable();
-    doesConnectionExist();
+    //doesConnectionExist();
+    /* 
+    check_empty();
+     readAll(); 
     //ussubmit();
-    
-   // loadValues();
-   
-     //   saveData();
-       // showLS();
+    // loadValues();
+    //   saveData();
+    // showLS();
     //div_hide1();
     //div_show1();
-   // var byteString = atob(url);
-   // var arrayBufferWithPNG = new ArrayBuffer(byteString.length);
-  /*  var blob = new Blob([arrayBufferWithPNG], { type: "image/png" }),
-        url = URL.createObjectURL(blob),
-        img = new Image();
-
-    img.onload = function () {
-        URL.revokeObjectURL(this.src);     // clean-up memory
-        document.body.appendChild(this);   // add image to DOM
-    }
-    img.src = url;   
-                            // can now "stream" the bytes*/
-
-
-
-// registerSW();
-
-   /* if ('serviceWorker' in navigator){
-        try{
-            navigator.serviceWorker.register('sw.js');
-            console.log('sw registered');
-        }catch(error)
-        {
-            console.log('sw failed');
-        }
-    }
-
-    // updateSources();
-
-/*async function updateSources() {
-    const url = await fetch('https://newsapi.org/v2/sources');
-    let response = await ajaxCall(url);
-    sourceSelector.innerHTML = json.sources
-        .map(src => '<option value="${src.id}">${src.name}</option>').join('\n');
-}*/
-
-
-document.getElementById("login").onclick = function() {
-    console.log('inside click event');
-    buttonToggleFun.showForm('login');
-    buttonToggleFun.hideForm('signup');
-};
-document.getElementById("signup").onclick = function() {
-    console.log('inside click event');
-    buttonToggleFun.showForm('signup');
-    buttonToggleFun.hideForm('login');
-};
+    // var byteString = atob(url);
+    // var arrayBufferWithPNG = new ArrayBuffer(byteString.length);
+    */
+    /*  var blob = new Blob([arrayBufferWithPNG], { type: "image/png" }),
+          url = URL.createObjectURL(blob),
+          img = new Image();
+  
+      img.onload = function () {
+          URL.revokeObjectURL(this.src);     // clean-up memory
+          document.body.appendChild(this);   // add image to DOM
+      }
+      img.src = url;
+                              // can now "stream" the bytes*/
+    // registerSW();
+    /* if ('serviceWorker' in navigator){
+         try{
+             navigator.serviceWorker.register('sw.js');
+             console.log('sw registered');
+         }catch(error)
+         {
+             console.log('sw failed');
+         }
+     }
+ 
+     // updateSources();
+ 
+ /*async function updateSources() {
+     const url = await fetch('https://newsapi.org/v2/sources');
+     let response = await ajaxCall(url);
+     sourceSelector.innerHTML = json.sources
+         .map(src => '<option value="${src.id}">${src.name}</option>').join('\n');
+ }*/
+    document.getElementById("login").onclick = function () {
+        console.log('inside click event');
+        buttonToggleFun.showForm('login');
+        buttonToggleFun.hideForm('signup');
+    };
+    document.getElementById("signup").onclick = function () {
+        console.log('inside click event');
+        buttonToggleFun.showForm('signup');
+        buttonToggleFun.hideForm('login');
+    };
 });
-
 
 window.addEventListener('online', () => location.reload());
 function saveValues()
@@ -146,7 +139,6 @@ async function ajaxCall(url) {
     const res = await fetch(url);
     return json = await res.json();
 }
-
 
      
 
@@ -426,27 +418,27 @@ open.onsuccess = function() {
     document.getElementById("demo").innerHTML = x;
 }*/
 
-/* Create XHR
-var xhr = new XMLHttpRequest(),
-    blob;
+ //Create XHR
+// DB
+//         putElephantInDb(blob);var xhr = new XMLHttpRequest(),
+//     blob;
 
-xhr.open("GET", "cam_left1.jpg", true);
-// Set the responseType to blob
-xhr.responseType = "blob";
+// xhr.open("GET", "cam_left1.jpg", true);
+// // Set the responseType to blob
+// xhr.responseType = "blob";
 
-xhr.addEventListener("load", function () {
-    if (xhr.status === 200) {
-        console.log("Image retrieved");
+// xhr.addEventListener("load", function () {
+//     if (xhr.status === 200) {
+//         console.log("Image retrieved");
         
-        // File as response
-        blob = xhr.response;
+//         // File as response
+//         blob = xhr.response;
 
-        // Put the received blob into IndexedDB
-        putElephantInDb(blob);
-    }
-}, false);
-// Send XHR
-xhr.send();*/
+//         // Put the received blob into Indexed
+//     }
+// }, false);
+// // Send XHR
+// xhr.send();
 
 /* function ussubmit() {
     var name = document.getElementById("username").value;
@@ -455,48 +447,13 @@ xhr.send();*/
     document.getElementById("usform").submit(); //form submission
     alert(" Name : " + name + " n title : " + newstitle1 +  "nn Form Submitted Successfully......");
    } */
-
-   /*Function attempts to access a file that exists on the internet.
+ /*Function attempts to access a file that exists on the internet.
     If we can access that file, this means an internet connection exists.*/
-   function doesConnectionExist() {
-    var xhr = new XMLHttpRequest();
-    var file = "http://127.0.0.1:8887/index.html";
-    var randomNum = Math.round(Math.random() * 10000);
  
-    xhr.open('HEAD', file + "?rand=" + randomNum, true);
-    xhr.send();
-     
-    xhr.addEventListener("readystatechange", processRequest, false);
- 
-    function processRequest(e) {
-      if (xhr.readyState == 4) {
-        if (xhr.status >= 200 && xhr.status < 304) {
-          alert("connection exists!");
-          
-          var objectStore = transaction.objectStore("Details");
-
-  // Make a request to clear all the data out of the object store
-  var objectStoreRequest = objectStore.clear();
-
-  objectStoreRequest.onsuccess = function(event) {
-    // report the success of our request
-    note.innerHTML += '<li>Request successful.</li>';
-    console.log("HI");
-  };
-        } else {
-          alert("connection doesn't exist!");
-        }
-      }
-    }
-}
+    
+    
 
 $(function () {
-    var COMPAT_ENVS = [
-        ['Firefox', ">= 16.0"],
-        ['Google Chrome',
-            ">= 24.0 (you may need to get Google Chrome Canary), NO Blob storage support"
-        ]
-    ];
     // var usernews = $('#usernews');
     // usernews.empty();
     // usernews.append('<ul id="user-list"></ul>');
@@ -510,21 +467,20 @@ $(function () {
 
     var db;
 
-    // Used to keep track of which view is displayed to avoid uselessly reloading it
-    var current_view_pub_key;
 
-    function openDb() {
+    function openDb(callback) {
         console.log("openDb ...");
         var req = indexedDB.open(DB_NAME, DB_VERSION);
-        req.onsuccess = function (evt) {
+        req.onsuccess = function () {
             // Better use "this" than "req" to get the result to avoid problems with
             // garbage collection.
             // db = req.result;
             db = this.result;
-           console.log("openDb DONE");
+           console.log(DB_NAME+" DB is ready!!");
+           callback();
         };
         req.onerror = function (evt) {
-            console.error("openDb:", evt.target.errorCode);
+            console.error(DB_NAME+" DB is not ready!! :", evt.target.errorCode);
         };
 
         req.onupgradeneeded = function (evt) {
@@ -536,20 +492,43 @@ $(function () {
                 });
 
             store.createIndex('username', 'username', {
-                unique: true
+                unique: false
             });
             store.createIndex('newstitle', 'newstitle', {
                 unique: false
             });
 
         };
-    }
+    };
 
     function getObjectStore(store_name, mode) {
         var tx = db.transaction(store_name, mode);
         return tx.objectStore(store_name);
+         /*Function attempts to access a file that exists on the internet.
+    If we can access that file, this means an internet connection exists.*/
+   
     }
     
+    var handleUserNewsSubmit = {
+        value:'',
+        value1:true,
+
+        checkConnection: function(){
+
+        },
+        submit: function(){
+
+        },
+        pushNewsToServer: function(){
+
+        },
+        insertIntoDB: function(){
+
+        },
+    };
+
+
+
   /* @param {string} biblioid
      * @param {string} title
      * @param {number} year
@@ -560,9 +539,9 @@ $(function () {
         console.log("addPublication arguments:", arguments);
         var obj = {
             username: username,
-            newstitle: newstitle
-            
+            newstitle: newstitle           
         };
+
         
         if (typeof blob != 'undefined')
             obj.blob = blob;
@@ -577,7 +556,7 @@ $(function () {
                     "use Firefox");
             throw e;
         }
-        req.onsuccess = function (evt) {
+        req.onsuccess = function () {
             console.log("Insertion in DB successful");
             displayActionSuccess();
             //displayPubList(store);
@@ -636,36 +615,7 @@ $(function () {
         msg = typeof msg != 'undefined' ? "Failure: " + msg : "Failure";
         $('#msg').html('<span class="action-failure">' + msg + '</span>');
     }
-    function save(array_of_files, callback) {
-        openDB(function(db) {
-          var tx = db.transaction('images', 'readwrite');
-          tx.objectStore('images').put(array_of_files, 'key');
-          tx.oncomplete = function() { callback(); };
-          tx.onabort = function() { console.log(tx.error); };
-        });
-      }
-    function load(callback) {
-        openDB(function(db) {
-          var tx = db.transaction('images', 'readonly');
-          var req = tx.objectStore('images').get('key');
-          req.onsuccess = function() {
-            callback(req.result);
-          };
-        });
-      }
-      
-      function openDB(callback) {
-        var open = indexedDB.open('Newsdb');
-        open.onupgradeneeded = function() {
-          var db = open.result;
-          db.createObjectStore('images');
-        };
-        open.onsuccess = function() {
-          var db = open.result;
-          callback(db);
-        };
-        open.onerror = function() { console.log(open.error); };
-      }
+    
     // function deletePublication(key, store) {
     //     console.log("deletePublication:", arguments);
     
@@ -732,16 +682,14 @@ $(function () {
             console.log("add ...");
             var newstitle = $('#newstitle').val();
             var username = $('#username').val();
-            var inputFileToLoad = $('#inputFileToLoad').arguments;
+           
             if (!newstitle || !username) {
                 displayActionFailure("Required field(s) missing");
                 return;
             }
             addPublication(username, newstitle);
-
-            
-            save(inputFileToLoad,openDb);
-            load(openDb);
+           
+           
             /*var file_input = $('#pub-file');
             var selected_file = file_input.get(0).files[0];
             console.log("selected_file:", selected_file);
@@ -761,9 +709,42 @@ $(function () {
         });
 
        
-    openDb();
+    openDb(doesConnectionExist);
     
+    //doesConnectionExist();
 
+    function doesConnectionExist() {
+        var xhr = new XMLHttpRequest();
+        var file = "http://127.0.0.1:8887/index.html";
+        var randomNum = Math.round(Math.random() * 10000);
+     
+        xhr.open('HEAD', file + "?rand=" + randomNum, true);
+        xhr.send();
+         
+        xhr.addEventListener("readystatechange", function() {
+            if (xhr.readyState == 4) {
+              if (xhr.status >= 200 && xhr.status < 304) {
+                alert("connection exists!");
+                console.log("check connection!");
+                var objectStore = getObjectStore(DB_STORE_NAME, 'readwrite');
+                //var objectStore = store.objectStore('Details');
+      
+                // Make a request to clear all the data out of the object store
+                var objectStoreRequest = objectStore.clear();
+              
+                objectStoreRequest.onsuccess = function(event) {
+                  // report the success of our request
+                  note.innerHTML += '<li>Request successful.</li>';
+                  console.log("check conn!");
+                };
+              } else {
+                alert("connection doesn't exist!");
+              }
+            }
+          }, false);
+     
+        
+    }
 }); 
 
 
@@ -804,4 +785,112 @@ $(function () {
 //       return false;
 //     }
 // }
+
+(function () {
+    // IndexedDB
+    var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.OIndexedDB || window.msIndexedDB,
+        IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.OIDBTransaction || window.msIDBTransaction,
+        dbVersion = 1.0;
+
+    // Create/open database
+    var request = indexedDB.open("imgFiles", dbVersion),
+        imgDb,
+        createObjectStore = function (dataBase) {
+            // Create an objectStore
+            console.log("Creating objectStore")
+            dataBase.createObjectStore("images");
+        },
+
+        getImageFile = function () {
+            // Create XHR
+            var xhr = new XMLHttpRequest(),
+                blob;
+
+            xhr.open("GET", "#imgTest", true);
+            // Set the responseType to blob
+            xhr.responseType = "blob";
+
+            xhr.addEventListener("load", function () {
+                if (xhr.status === 200) {
+                    console.log("Image retrieved");
+                    
+                    // Blob as response
+                    blob = xhr.response;
+                    console.log("Blob:" + blob);
+
+                    // Put the received blob into IndexedDB
+                    putElephantInDb(blob);
+                }
+            }, false);
+            // Send XHR
+            xhr.send();
+        },
+
+        putElephantInDb = function (blob) {
+            console.log("Putting images in IndexedDB");
+
+            // Open a transaction to the database
+            var readWriteMode = typeof IDBTransaction.READ_WRITE == "undefined" ? "readwrite" : IDBTransaction.READ_WRITE;
+            var transaction = imgDb.transaction(["images"], readWriteMode);
+
+            // Put the blob into the dabase
+            var put = transaction.objectStore("images").put(blob, "image");
+
+            // Retrieve the file that was just stored
+            transaction.objectStore("images").get("image").onsuccess = function (event) {
+                var imgFile = event.target.result;
+                console.log("Got image!" + imgFile);
+
+                // Get window.URL object
+                var URL = window.URL || window.webkitURL;
+
+                // Create and revoke ObjectURL
+                var imgURL = URL.createObjectURL(imgFile);
+
+                // Set img src to ObjectURL
+                var imgElephant = document.getElementById("inputFileToLoad");
+                imgElephant.setAttribute("src", imgURL);
+
+                // Revoking ObjectURL
+                imgElephant.onload = function() {
+                    window.URL.revokeObjectURL(this.src);
+                }
+            };
+        };
+
+    request.onerror = function (event) {
+        console.log("Error creating/accessing IndexedDB database");
+    };
+
+    request.onsuccess = function (event) {
+        console.log("Success creating/accessing IndexedDB database");
+        imgDb = request.result;
+
+        imgDb.onerror = function (event) {
+            console.log("Error creating/accessing IndexedDB database");
+        };
+        
+        // Interim solution for Google Chrome to create an objectStore. Will be deprecated
+        if (imgDb.setVersion) {
+            if (imgDb.version != dbVersion) {
+                var setVersion = imgDb.setVersion(dbVersion);
+                setVersion.onsuccess = function () {
+                    createObjectStore(imgDb);
+                    getImageFile();
+                };
+            }
+            else {
+                getImageFile();
+            }
+        }
+        else {
+            getImageFile();
+        }
+    }
+    
+    // For future use. Currently only in latest Firefox versions
+    request.onupgradeneeded = function (event) {
+        createObjectStore(event.target.result);
+    };
+})();
 

@@ -291,7 +291,7 @@
                         <textarea id="msg1" name="bdesc" placeholder="Write a few lines about the article(max 250 char)"></textarea>
                         <textarea id="msg2" name="desc" placeholder="Write about article in detail(max 500 char)"></textarea>
                         <p>Upload image here</p>
-                        <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+                        <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();"  />
                         <div id="imgTest">
                             
                         </div>
@@ -357,6 +357,7 @@
                                 "imgTest").innerHTML);
                             console.log("Converted Base64 version is " + document.getElementById(
                                 "imgTest").innerHTML);
+                                return srcData;
                         }
                         fileReader.readAsDataURL(fileToLoad);
                     }
