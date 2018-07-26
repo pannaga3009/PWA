@@ -2,11 +2,9 @@
 const apiKey = '3bc0fcb13a634a4ba0db6bf6603e35a1';
 const main = document.querySelector('main');
 const sourceSelector = document.querySelector('#sourceSelector');
-
-
-
-
 window.addEventListener('load', () => {
+    popNews();
+    popularNews();
     updateNews();
     update();
     buttonToggleFun.toggle('default');
@@ -15,9 +13,11 @@ window.addEventListener('load', () => {
     div_show();
     div_hide();
     saveValues();
+    
+    check_empty();
     //doesConnectionExist();
     /* 
-    check_empty();
+    
      readAll(); 
     //ussubmit();
     // loadValues();
@@ -25,38 +25,7 @@ window.addEventListener('load', () => {
     // showLS();
     //div_hide1();
     //div_show1();
-    // var byteString = atob(url);
-    // var arrayBufferWithPNG = new ArrayBuffer(byteString.length);
     */
-    /*  var blob = new Blob([arrayBufferWithPNG], { type: "image/png" }),
-          url = URL.createObjectURL(blob),
-          img = new Image();
-  
-      img.onload = function () {
-          URL.revokeObjectURL(this.src);     // clean-up memory
-          document.body.appendChild(this);   // add image to DOM
-      }
-      img.src = url;
-                              // can now "stream" the bytes*/
-    // registerSW();
-    /* if ('serviceWorker' in navigator){
-         try{
-             navigator.serviceWorker.register('sw.js');
-             console.log('sw registered');
-         }catch(error)
-         {
-             console.log('sw failed');
-         }
-     }
- 
-     // updateSources();
- 
- /*async function updateSources() {
-     const url = await fetch('https://newsapi.org/v2/sources');
-     let response = await ajaxCall(url);
-     sourceSelector.innerHTML = json.sources
-         .map(src => '<option value="${src.id}">${src.name}</option>').join('\n');
- }*/
     document.getElementById("login").onclick = function () {
         console.log('inside click event');
         buttonToggleFun.showForm('login');
@@ -90,6 +59,45 @@ async function registerSW() {
       console.log(`SW registration failed`);
     }
   }
+}
+async function popNews() {
+    const url = 'https://newsapi.org/v2/everything?domains=wsj.com&apiKey=' + apiKey;
+    let response = await ajaxCall(url);
+    //  response.articles.forEach(createArt);
+    response.articles.forEach(article => {
+        $("#P_splNewsDiv .news_img").attr('src', article.urlToImage);
+        $("#P_splNewsDiv  .title1").text(article.title);
+        $("#P_splNewsDiv  .title1").attr('href', article.url);
+        $("#P_splNewsDiv  .feature_article_content").text(article.description);
+
+        $("#ajaxNews").append($("#P_splNewsDiv").html());
+        
+        $("#P_splNewsDiv  .news_img").attr('src','');
+        $("#P_splNewsDiv  .title1").text('');
+        $("#P_splNewsDiv  .title1").attr('href', '');
+        $("#P_splNewsDiv  .feature_article_content").text('');
+        
+    });
+}
+async function popularNews(){
+    const url = 'https://newsapi.org/v2/everything?q=bitcoin&sortBy=publishedAt&apiKey=' + apiKey;
+    let response = await ajaxCall(url);
+    response.articles.forEach(article => {
+        $("#P_newsDiv .mainNews_img").attr('src', article.urlToImage);
+        $("#P_newsDiv .title").text(article.title);
+        $("#P_newsDiv .title").attr('href', article.url);
+        $("#P_newsDiv .feature_article_content").text(article.description);
+
+        $("#ajaxNews").append($("#P_newsDiv").html());
+
+        $("#P_newsDiv .mainNews_img").attr('src', '');
+        $("#P_newsDiv .title").text('');
+        $("#P_newsDiv .title").attr('href', '');
+        $("#P_newsDiv .feature_article_content").text('');
+    });
+
+
+
 }
 async function updateNews() {
 
@@ -205,36 +213,6 @@ function saveComments()
     {
         localStorage._cm=document.getElementById("comments").value;
         
-            /*var obj={comments:" "};
-                obj.comments=document.getElementById('comments').value;
-                //obj.phone=document.getElementById('phone').value;
-        
-            var listObj=localStorage.getItem('comments');
-            if(listObj!=null){
-              listObj=JSON.parse(listObj); //this will give array of object
-              listObj.push(obj);
-            }else{
-              listObj=[obj]; //first time 
-            }
-           // Save Data in Local Storage 
-            localStorage.setItem('comments',JSON.stringify(listObj)); 
-           //Please check Local Storage which will be like
-            //[{"name":"Anand","phone":"6546456456"}{"name":"Andy","phone":"78688"}]
-        
-        
-       // localStorage._n=document.getElementById("name").value;
-       //localStorage._e=document.getElementById("email").value.toString();
-       /*var ArrayData =[];       
-       
-// store array to localstorage
-localStorage.setItem("comments",  JSON.stringify(ArrayData));
-// retrieve stored data (JSON stringified) and convert
-var storedData = localStorage.getItem("ArrayData ");
-if (storedData) {
-    ArrayData = JSON.parse(storedData);
-} */
-      
-        
     }
     function loadComments()
     {
@@ -266,26 +244,7 @@ if (storedData) {
             //hide signup
         },
  }; */
- /*function div_show() {
-    
-     document.getElementById('signup').style.display = "none";
-      //display loginButton
-      document.getElementById('abc').style.display = "block";
-      document.getElementById('login').style.display = "none";
-    document.getElementById('logout').style.display = "block";
-   
-    }
-    //Function to Hide Popup
-    function div_hide(){
-    document.getElementById('abc').style.display = "none";
-    //document.getElementById('efg').style.display = "none";
-    document.getElementById('login').style.display = "block";
-    document.getElementById('logout').style.display = "none";
-    document.getElementById('signup').style.display = "block";
-    }
-
-    */
-
+ 
 
 
 
@@ -346,112 +305,6 @@ if (storedData) {
 }();
 
                
-/*var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
-
-// Open (or create) the database
-var open = indexedDB.open("MyDatabase", 1);
-
-// Create the schema
-open.onupgradeneeded = function() {
-    var db = open.result;
-    var store = db.createObjectStore("MyObjectStore", {keyPath: "id"});
-    var index = store.createIndex("NewsIndex", [usernews.username, usernews.newstitle]);
-};
-open.onsuccess = function() {
-    // Start a new transaction
-    var db = open.result;
-    var tx = db.transaction("MyObjectStore", "readwrite");
-    var store = tx.objectStore("MyObjectStore");
-    var index = store.index("NewsIndex");
-     // Add some data
-   store.put({id: 12345, usernews: {username: "John", newstitle: "Doe"}, age: 42});
-    store.put({id: 67890, usernews: {username: "Bob", newstitle: "Smith"}, age: 35});
-    
-    // Query the data
-     var getJohn = store.get(12345);
-     var getBob = index.get(["Smith", "Bob"]);
-
-     getJohn.onsuccess = function() {
-         console.log(getJohn.result.usernews.username);  // => "John"
-     };
- 
-     getBob.onsuccess = function() {
-         console.log(getBob.result.usernews.username);   // => "Bob"
-     };
- 
-     // Close the db when the transaction is done
-     tx.oncomplete = function() {
-         db.close();
-     };
- }
-   
-
-   /* getJohn.onsuccess = function() {
-        console.log(getJohn.result.name.first);  // => "John" */
-
-
-  
-//User Image UpLoad
-/*$(document).ready(function(){
-
-	var thumb = $('#thumb');	
-   
-	new AjaxUpload('imageUpload', {
-		action: $('#userimage').attr('action'),
-		name: 'image',
-		onSubmit: function(file, extension) {
-			$('#preview').addClass('loading');
-		},
-		onComplete: function(file, response) {
-			thumb.load(function(){
-				$('#preview').removeClass('loading');
-				thumb.unbind();
-			});
-			thumb.attr('src', response);
-		}
-	});
-});*/
-
-//function to upload image files
-/*function myFunction() {
-    var x = document.getElementById("imageUpload1").required;
-    document.getElementById("demo").innerHTML = x;
-}*/
-
- //Create XHR
-// DB
-//         putElephantInDb(blob);var xhr = new XMLHttpRequest(),
-//     blob;
-
-// xhr.open("GET", "cam_left1.jpg", true);
-// // Set the responseType to blob
-// xhr.responseType = "blob";
-
-// xhr.addEventListener("load", function () {
-//     if (xhr.status === 200) {
-//         console.log("Image retrieved");
-        
-//         // File as response
-//         blob = xhr.response;
-
-//         // Put the received blob into Indexed
-//     }
-// }, false);
-// // Send XHR
-// xhr.send();
-
-/* function ussubmit() {
-    var name = document.getElementById("username").value;
-    var newstitle1 = document.getElementById("newstitle").value;
-    console.log("inside ussubmit");
-    document.getElementById("usform").submit(); //form submission
-    alert(" Name : " + name + " n title : " + newstitle1 +  "nn Form Submitted Successfully......");
-   } */
- /*Function attempts to access a file that exists on the internet.
-    If we can access that file, this means an internet connection exists.*/
- 
-    
-    
 
 $(function () {
     // var usernews = $('#usernews');
@@ -567,44 +420,7 @@ $(function () {
         };
     }
 
-    // function addComments(comments) {
-    //     console.log("addComments arguments:", arguments);
-    //     var obj = {
-    //         comments:comments
-    //     };
-        
-    //     if (typeof blob != 'undefined')
-    //         obj.blob = blob;
-
-    //     var store = getObjectStore(DB_STORE_NAME, 'readwrite');
-    //     var req;
-    //     try {
-    //         req = store.add(obj);
-    //     } catch (e) {
-    //         if (e.name == 'DataCloneError')
-    //             displayActionFailure("This engine doesn't know how to clone a Blob, " +
-    //                 "use Firefox");
-    //         throw e;
-    //     }
-    //     req.onsuccess = function (evt) {
-    //         console.log("Insertion in DB successful");
-    //         displayActionSuccess();
-    //         //displayPubList(store);
-    //     };
-    //     req.onerror = function () {
-    //         console.error("addPublication error", this.error);
-    //         displayActionFailure(this.error);
-    //     };
-    // }
-
-    // $('#addComments').on('click',function (evt) {
-    //     evt.preventDefault();
-    //     console.log("add ...");
-    //     var comments = $('#comments').val();
-        
-
-    // addComments(comments);
-    // });
+   
 
     function displayActionSuccess(msg) {
         msg = typeof msg != 'undefined' ? "Success: " + msg : "Success";
@@ -616,65 +432,7 @@ $(function () {
         $('#msg').html('<span class="action-failure">' + msg + '</span>');
     }
     
-    // function deletePublication(key, store) {
-    //     console.log("deletePublication:", arguments);
     
-    //     if (typeof store == 'undefined')
-    //       store = getObjectStore(DB_STORE_NAME, 'readwrite');
-    
-    //     // As per spec http://www.w3.org/TR/IndexedDB/#object-store-deletion-operation
-    //     // the result of the Object Store Deletion Operation algorithm is
-    //     // undefined, so it's not possible to know if some records were actually
-    //     // deleted by looking at the request result.
-    //     var req = store.get(key);
-    //     req.onsuccess = function(evt) {
-    //       var record = evt.target.result;
-    //       console.log("record:", record);
-    //       if (typeof record == 'undefined') {
-    //         displayActionFailure("No matching record found");
-    //         return;
-    //       }
-    //       // Warning: The exact same key used for creation needs to be passed for
-    //       // the deletion. If the key was a Number for creation, then it needs to
-    //       // be a Number for deletion.
-    //       req = store.delete(key);
-    //       req.onsuccess = function(evt) {
-    //         console.log("evt:", evt);
-    //         console.log("evt.target:", evt.target);
-    //         console.log("evt.target.result:", evt.target.result);
-    //         console.log("delete successful");
-    //         displayActionSuccess("Deletion successful");
-    //         displayPubList(store);
-    //       };
-    //       req.onerror = function (evt) {
-    //         console.error("deletePublication:", evt.target.errorCode);
-    //       };
-    //     };
-    //     req.onerror = function (evt) {
-    //       console.error("deletePublication:", evt.target.errorCode);
-    //     };
-    //   }
-
-      
-    // function readAll() {
-    //     console.log("reading !");
-    //    // db.transaction(store_name, mode);
-    //   //  var objectStore = db.transaction(store_name, mode).objectStore("Details");
-    //   getObjectStore();
-    //    // console.log(objectStore);
-    //     objectStore.openCursor().onsuccess = function(event) {
-    //       var cursor = event.target.result;
-    //       if (cursor) {
-    //             alert("Name for id " + cursor.key + " is " + cursor.value.Details);
-    //             cursor.continue();
-    //             console.log("reading !");
-    //       }
-    //       else {
-    //         console.log("No more entries!");
-    //   }
-    //     };      
-    // }
-
 
 
         $('#addButton').on('click',function (evt) {
@@ -690,22 +448,7 @@ $(function () {
             addPublication(username, newstitle);
            
            
-            /*var file_input = $('#pub-file');
-            var selected_file = file_input.get(0).files[0];
-            console.log("selected_file:", selected_file);
-            // Keeping a reference on how to reset the file input in the UI once we
-            // have its value, but instead of doing that we rather use a "reset" type
-            // input in the HTML form.
-            //file_input.val(null);
-            var file_url = $('#pub-file-url').val();
-            if (selected_file) {
-                addPublication(username, newstitle,selected_file);
-            } else if (file_url) {
-                addPublicationFromUrl(username, newstitle,file_url);
-            } else {
-                addPublication(username, newstitle);
-            }
-            */
+            
         });
 
        
@@ -750,41 +493,6 @@ $(function () {
 
 
 
-// Callback will be called with array of images, or undefined
-// if not previously saved.
-
-
-/*dbPromise.then(function(db) {
-    var tx = db.transaction('Details', 'readonly');
-    var Details = tx.objectStore('Details');
-    return Details.get('username');
-  }).then(function(val) {
-    console.dir(val);
-    console.log("read function called");
-  });
-  */
-
-
- // Immediately-Invoked Function Expression (IIFE)
-
-// //function to check internet connectivity
-//  function hostReachable() {
-
-//     // Handle IE and more capable browsers
-//     var xhr = new ( window.ActiveXObject || XMLHttpRequest )( "Microsoft.XMLHTTP" );
-//     var status;
-  
-//     // Open new request as a HEAD to the root hostname with a random param to bust the cache
-//     xhr.open( "HEAD", "//" + window.location.hostname + "/?rand=" + Math.floor((1 + Math.random()) * 0x10000), false );
-  
-//     // Issue request and handle response
-//     try {
-//       xhr.send();
-//       return ( xhr.status >= 200 && (xhr.status < 300 || xhr.status === 304) );
-//     } catch (error) {
-//       return false;
-//     }
-// }
 
 (function () {
     // IndexedDB
